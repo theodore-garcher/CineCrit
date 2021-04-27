@@ -6,7 +6,7 @@
 $user =  'theodore';
 $pass =  'brocoli';
 try {
-    $cnx = new PDO('pgsql:host=seveille.dev;dbname=test', $user, $pass);
+    $cnx = new PDO('pgsql:host=seveille.dev;dbname=testTed', $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 } catch (PDOException $e) {
     echo "ERREUR : La connexion a échouée";
 
