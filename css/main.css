@@ -1,0 +1,48 @@
+html {
+    font-family: Roboto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.catalog {
+    border : 0px solid black;
+}
+
+.catalog table {
+    border-collapse: collapse;
+}
+
+.catalog tr {
+    border : 1px solid rgba(128, 128, 128, 0.507);
+}
+
+.catalog td {
+    padding: 5px 10px 5px 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+  
+.navbar  li {
+    float: left;
+}
+  
+.navbar li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+.navbar li a:hover {
+    background-color: #ddd;
+}
