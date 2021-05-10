@@ -14,7 +14,7 @@
     } else {
         $pseudo = $_POST['pseudo'];
         $mail = $_POST['mail'];
-        $mdp = $_POST['mdp'];
+        $mdp = md5($_POST['mdp']);
         $sexe = $_POST['sexe'];
         $isadmin = 'false';
         $dataPseudo = $cnx->query("SELECT * FROM cinecrit.utilisateur WHERE cinecrit.utilisateur.pseudouser LIKE '" . $pseudo . "';")->fetchAll();

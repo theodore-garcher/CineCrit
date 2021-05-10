@@ -14,7 +14,7 @@ include("connexion.inc.php");
 <body>
     <?php
     $pseudo = $_POST['pseudo'];
-    $mdp = $_POST['mdp'];
+    $mdp = md5($_POST['mdp']);
     $requete = "SELECT * FROM cinecrit.utilisateur WHERE cinecrit.utilisateur.pseudouser LIKE '" . $pseudo . "';";
     $data = $cnx->query($requete)->fetchAll();
     if (empty($data)) {
