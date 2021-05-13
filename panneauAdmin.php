@@ -109,6 +109,29 @@ include("navbar.php");
         <input type="reset" name="reset" value="Annuler" />
         <input type="submit" name="submit" value="Valider" />
     </form>
+    <h1>Ajout d'un film</h1>
+    <form method="POST" action="panneauAdmin.php">
+        <table>
+            <tr>
+                <td>Rechercher un utilisateur</td>
+                <td><input type="search" name="searchDemand"/></td>
+                <td><input type="submit" value="Rechercher"></td>
+            </tr>
+            <tr>
+                <td>Vous avez recherché :</td>
+                <td>
+                <?php
+                if (isset($_POST['searchDemand']) == false){
+                    echo "Rien";
+                } else {
+                    echo $_POST['searchDemand'];
+                }
+                ?>
+                </td>
+            </tr>
+        </table>
+    </form>
+
 </body>
 
 </html>
