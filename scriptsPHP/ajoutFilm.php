@@ -18,10 +18,11 @@
         $duree = $_POST['duree'];
         $langue = $_POST['langue'];
         $genre = $_POST['genre'];
+        $synopsis = $_POST['synopsis'];
 
-        $sql = "INSERT INTO cinecrit.film (datesortie, boxoffice, dureeminutesfilm, vofilm, titre) VALUES (?,?,?,?,?) RETURNING idfilm";
+        $sql = "INSERT INTO cinecrit.film (datesortie, boxoffice, dureeminutesfilm, vofilm, titre, synopsis) VALUES (?,?,?,?,?,?) RETURNING idfilm";
         $req = $cnx->prepare($sql);
-        $req->execute([$sortie, $box, $duree, $langue, $titre]);
+        $req->execute([$sortie, $box, $duree, $langue, $titre, $synopsis]);
         $data = $req->fetch(\PDO::FETCH_ASSOC);
         foreach ($data as $row) {
             $idfilm = $row;

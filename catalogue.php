@@ -18,6 +18,7 @@ include("navbar.php");
         <table>
             <tr>
                 <td>Titre</td>
+                <td>Synopsis</td>
                 <td>Date de sortie</td>
                 <td>Score au box office</td>
                 <td>Durée</td>
@@ -30,6 +31,7 @@ include("navbar.php");
             foreach ($data as $row) {
                 echo "<tr class=\"catalogitem\">";
                 echo "<td>" . $row['titre'] . "</td>";
+                echo "<td>" . $row['synopsis'] . "</td>";
                 echo "<td>" . $row['datesortie'] . "</td>";
                 echo "<td>" . $row['boxoffice'] . "</td>";
                 echo "<td>" . $row['dureeminutesfilm'] . "</td>";
