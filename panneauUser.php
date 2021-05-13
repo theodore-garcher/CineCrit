@@ -23,7 +23,7 @@ include("navbar.php");
                 <td>Durée</td>
                 <td>Langue</td>
                 <td>Genre(s)</td>
-                <td>Ajouter critique</td>
+                <td>Retirer des vus</td>
             </tr>
             <?php
             $data = $cnx->query("SELECT * FROM cinecrit.film NATURAL JOIN cinecrit.filmvisionne NATURAL JOIN cinecrit.utilisateur WHERE cinecrit.utilisateur.pseudouser LIKE '" . $_SESSION['pseudo'] . "';")->fetchAll();
@@ -41,9 +41,7 @@ include("navbar.php");
                 }
                 echo "</td>";
                 echo "<td>";
-                echo "<form method=\"POST\" action=\"scriptsPHP/ajoutCritique.php\">";
-                echo "<input type=\"radio\" name=\"film\" value=\"" . $row['idfilm'] . "\" checked hidden/>";
-                echo "<input type=\"submit\" name=\"submit\" value=\"Ajouter\" /></form>";
+                echo "<a href=\"scriptsPHP/retirerFilmVu.php/?id=" . $row['idfilm'] . "\">Retirer</a>";
                 echo "</td></tr>";
             }
             ?>
