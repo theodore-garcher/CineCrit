@@ -15,6 +15,13 @@ include("navbar.php");
 <body>
     <h1>Catalogue de films</h1>
     <div class="catalog">
+        <?php
+        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 't') {
+            $isadmin = true;
+        } else {
+            $isadmin = false;
+        }
+        ?>
         <table>
             <tr>
                 <td>Titre</td>
@@ -25,6 +32,11 @@ include("navbar.php");
                 <td>Langue</td>
                 <td>Genre(s)</td>
                 <td>Ajouter film</td>
+                <?php
+                if ($isadmin == 1) {
+                echo "<td colspan=3>Actions d'administrateur</td>";
+            }
+                ?>
             </tr>
             <?php
             $data = $cnx->query("SELECT * FROM cinecrit.film;")->fetchAll();
@@ -47,7 +59,14 @@ include("navbar.php");
                 if (empty($dataCheck)) {
                     echo "<a href=\"scriptsPHP/ajoutFilmVu.php/?id=" . $row['idfilm'] . "\">J'ai vu ce film</a>";
                 }
-                echo "</td></tr>";
+                echo "</td>";
+
+                if ($isadmin) {
+                    echo "<td><a href=\"\">Gérer les acteurs</a></td>";
+                    echo "<td><a href=\"\">Gérer les résalisateurs</a></td>";
+                    echo "<td><a href=\"\">Supprimer ce film</a></td>";
+                }
+                echo "</tr>";
             }
             ?>
 
