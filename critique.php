@@ -61,14 +61,24 @@ foreach ($data as $row) {
         <table>
             <tr>
                 <td><label for="note">Note</label></td>
-                <td><input type="text" name="note" /></td>
+                <td>
+                    <select name="note">
+                        <option selected="selected">-- note --</option>
+                        <option name="note" value="1">1</option>
+                        <option name="note" value="2">2</option>
+                        <option name="note" value="3">3</option>
+                        <option name="note" value="4">4</option>
+                        <option name="note" value="5">5</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <td><label for="mdp">Votre critique</label></td>
-                <td><input type="password" name="mdp" /></td>
+                <td><label for="textecrit">Votre critique</label></td>
+                <td><textarea name="textecrit" rows="5" cols="50"></textarea></td>
             </tr>
         </table>
         <br>
+        <input type="hidden" name="idfilm" value="<?php echo $film; ?>">
         <input type="reset" name="reset" value="Effacer" />
         <input type="submit" name="submit" value="Valider" />
     </form>
@@ -79,16 +89,16 @@ foreach ($data as $row) {
             <td>Note</td>
             <td>Critique</td>
         </tr>
-        <tr>
-            <?php
-            $datagenre = $cnx->query("SELECT * FROM cinecrit.critique NATURAL JOIN cinecrit.utilisateur NATURAL JOIN cinecrit.film WHERE cinecrit.critique.idfilm = " . $film . ";")->fetchAll();
-            foreach ($datagenre as $row) {
-                echo "<td>" . $row['pseudouser'] . "</td>";
-                echo "<td>" . $row['notecrit'] . "/5</td>";
-                echo "<td>" . $row['textecrit'] . "</td>";
-            }
-            ?>
-        </tr>
+        <?php
+        $data = $cnx->query("SELECT * FROM cinecrit.critique NATURAL JOIN cinecrit.utilisateur NATURAL JOIN cinecrit.film WHERE cinecrit.critique.idfilm = " . $film . ";")->fetchAll();
+        foreach ($data as $row) {
+            echo "<tr>";
+            echo "<td>" . $row['pseudouser'] . "</td>";
+            echo "<td>" . $row['notecrit'] . "/5</td>";
+            echo "<td>" . $row['textecrit'] . "</td>";
+            echo "</tr>";
+        }
+        ?>
     </table>
 </body>
 

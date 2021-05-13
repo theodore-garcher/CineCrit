@@ -52,6 +52,24 @@ include("navbar.php");
 
         </table>
     </div>
+    <h2>Vos critiques</h2>
+    <table>
+        <tr>
+            <td>Film</td>
+            <td>Note</td>
+            <td>Critique</td>
+        </tr>
+        <?php
+        $data = $cnx->query("SELECT * FROM cinecrit.critique NATURAL JOIN cinecrit.film WHERE cinecrit.critique.iduser = " . $_SESSION['iduser'] . ";")->fetchAll();
+        foreach ($data as $row) {
+            echo "<tr>";
+            echo "<td>" . $row['titre'] . "</td>";
+            echo "<td>" . $row['notecrit'] . "/5</td>";
+            echo "<td>" . $row['textecrit'] . "</td>";
+            echo "</tr>";
+        }
+        ?>
+    </table>
 </body>
 
 </html>
