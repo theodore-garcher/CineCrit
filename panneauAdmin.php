@@ -20,10 +20,6 @@ include("navbar.php");
                 <td>Nom du genre</td>
                 <td><input type="text" name="nom" required></td>
             </tr>
-            <tr>
-                <td>Code (8 caractères)</td>
-                <td><input type="text" name="code" required></td>
-            </tr>
         </table><br />
         <input type="reset" name="reset" value="Annuler" />
         <input type="submit" name="submit" value="Valider" />
@@ -36,12 +32,8 @@ include("navbar.php");
                 <td><input type="text" name="nom" required></td>
             </tr>
             <tr>
-                <td>Nationalité</td>
+                <td>Nationalité (2 caractères)</td>
                 <td><input type="text" name="nat" required></td>
-            </tr>
-            <tr>
-                <td>Code (8 caractères)</td>
-                <td><input type="text" name="code" required></td>
             </tr>
         </table><br />
         <input type="reset" name="reset" value="Annuler" />
@@ -60,10 +52,10 @@ include("navbar.php");
             </tr>
             <tr>
                 <td>Date de naissance (jj-mm-aaaa)</td>
-                <td><input type="text" name="naissance" required></td>
+                <td><input type="date" name="naissance" required></td>
             </tr>
             <tr>
-                <td>Nationalité</td>
+                <td>Nationalité (2 caractères)</td>
                 <td><input type="text" name="nat" required></td>
             </tr>
         </table><br />
@@ -104,7 +96,10 @@ include("navbar.php");
                     ?>
                 </td>
             </tr>
-
+            <tr>
+                <td>Synopsis</td>
+                <td><textarea name="synopsis" rows="5" cols="50"></textarea></td>
+            </tr>
         </table><br />
         <input type="reset" name="reset" value="Annuler" />
         <input type="submit" name="submit" value="Valider" />
