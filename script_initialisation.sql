@@ -50,7 +50,6 @@ CREATE TABLE Critique(
    idFilm INTEGER NOT NULL,
    idUser INTEGER NOT NULL,
    PRIMARY KEY(idCrit),
-   UNIQUE(idFilm),
    FOREIGN KEY(idFilm) REFERENCES Film(idFilm),
    FOREIGN KEY(idUser) REFERENCES Utilisateur(idUser)
 );

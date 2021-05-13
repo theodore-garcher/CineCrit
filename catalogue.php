@@ -67,8 +67,8 @@ include("navbar.php");
 
                 if ($isadmin) {
                     echo "<td><a href=\"scriptsPHP/gestionActeur.php?idfilm=". $row['idfilm'] ."\">Gérer les acteurs</a></td>";
-                    echo "<td><a href=\"scriptsPHP/gestionRealisateur.php/?idfilm=". $row['idfilm'] ." \">Gérer les résalisateurs</a></td>";
-                    echo "<td><a href=\"scriptsPHP/retirerFilmCatalogue.php/?idfilm=". $row['idfilm'] ."\">Supprimer ce film</a></td>";
+                    echo "<td><a href=\"scriptsPHP/gestionRealisateur.php?idfilm=". $row['idfilm'] ." \">Gérer les résalisateurs</a></td>";
+                    echo "<td><a href=\"scriptsPHP/retirerFilmCatalogue.php?idfilm=". $row['idfilm'] ."\">Supprimer ce film</a></td>";
                 }
                 echo "</tr>";
             }
