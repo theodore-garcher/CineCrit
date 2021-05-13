@@ -10,16 +10,16 @@
     <?php
     include("connexion.inc.php");
     session_start();
-    if (isset($_POST['film']) == false) {
+    if (isset($_GET['id']) == false) {
         echo "Merci de passer par le catalogue.";
     } else {
-        $film = $_POST['film'];
+        $film = $_GET['id'];
         $sql = "INSERT INTO cinecrit.filmvisionne (idfilm, iduser) VALUES (?,?)";
         $req2 = $cnx->prepare($sql);
         $req2->execute([$film, $_SESSION['iduser']]);
         if ($req2->rowCount() > 0) {
             echo "Le film a bien été ajouté à votre liste.";
-            header('Location: ../panneauUser.php');
+            header('Location: ../../panneauUser.php');
         } else {
             echo 'Erreur lors de l’ajout de votre film.';
         }
