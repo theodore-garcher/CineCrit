@@ -1,5 +1,4 @@
 <?php
-session_start();
 include("connexion.inc.php");
 ?>
 
@@ -8,7 +7,7 @@ include("connexion.inc.php");
 
 <head>
     <meta charset="utf-8" />
-    <title>Authentification</title>
+    <title>Gestion des administrateurs</title>
 </head>
 
 <body>

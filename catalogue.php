@@ -62,13 +62,13 @@ include("navbar.php");
                 }
                 echo "</td>";
                 echo "<td>";
-                echo "<a href=\"critique.php/?id=" . $row['idfilm'] . "\">Voir critiques</a>";
+                echo "<a href=\"critique.php?id=" . $row['idfilm'] . "\">Voir critiques</a>";
                 echo "</td>";
 
                 if ($isadmin) {
-                    echo "<td><a href=\"\">Gérer les acteurs</a></td>";
-                    echo "<td><a href=\"\">Gérer les résalisateurs</a></td>";
-                    echo "<td><a href=\"\">Supprimer ce film</a></td>";
+                    echo "<td><a href=\"scriptsPHP/gestionActeur.php?idfilm=". $row['idfilm'] ."\">Gérer les acteurs</a></td>";
+                    echo "<td><a href=\"scriptsPHP/gestionRealisateur.php/?idfilm=". $row['idfilm'] ." \">Gérer les résalisateurs</a></td>";
+                    echo "<td><a href=\"scriptsPHP/retirerFilmCatalogue.php/?idfilm=". $row['idfilm'] ."\">Supprimer ce film</a></td>";
                 }
                 echo "</tr>";
             }

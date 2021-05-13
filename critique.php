@@ -1,6 +1,6 @@
 <?php
 include("scriptsPHP/connexion.inc.php");
-include("navbarGET.php");
+include("navbar.php");
 $film = $_GET['id'];
 $data = $cnx->query("SELECT * FROM cinecrit.film WHERE cinecrit.film.idfilm = " . $film . ";")->fetchAll();
 foreach ($data as $row) {
@@ -18,7 +18,7 @@ foreach ($data as $row) {
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Critiques : <?php echo $titre; ?></title>
 
 </head>
@@ -57,7 +57,7 @@ foreach ($data as $row) {
         </tr>
     </table>
     <h2>Ajouter une critique pour ce film</h2>
-    <form action="../scriptsPHP/ajoutCritique.php" method="post">
+    <form action="scriptsPHP/ajoutCritique.php" method="post">
         <table>
             <tr>
                 <td><label for="note">Note</label></td>
