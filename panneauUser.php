@@ -24,6 +24,7 @@ include("navbar.php");
                 <td>Langue</td>
                 <td>Genre(s)</td>
                 <td>Retirer des vus</td>
+                <td>Rédiger une critique</td>
             </tr>
             <?php
             $data = $cnx->query("SELECT * FROM cinecrit.film NATURAL JOIN cinecrit.filmvisionne NATURAL JOIN cinecrit.utilisateur WHERE cinecrit.utilisateur.pseudouser LIKE '" . $_SESSION['pseudo'] . "';")->fetchAll();
@@ -42,6 +43,9 @@ include("navbar.php");
                 echo "</td>";
                 echo "<td>";
                 echo "<a href=\"scriptsPHP/retirerFilmVu.php/?id=" . $row['idfilm'] . "\">Retirer</a>";
+                echo "</td>";
+                echo "<td>";
+                echo "<a href=\"critique.php/?id=" . $row['idfilm'] . "\">Écrire</a>";
                 echo "</td></tr>";
             }
             ?>

@@ -25,6 +25,7 @@ include("navbar.php");
                 <td>Langue</td>
                 <td>Genre(s)</td>
                 <td>Ajouter film</td>
+                <td>Voir les critiques</td>
             </tr>
             <?php
             $data = $cnx->query("SELECT * FROM cinecrit.film;")->fetchAll();
@@ -47,6 +48,9 @@ include("navbar.php");
                 if (empty($dataCheck)) {
                     echo "<a href=\"scriptsPHP/ajoutFilmVu.php/?id=" . $row['idfilm'] . "\">J'ai vu ce film</a>";
                 }
+                echo "</td>";
+                echo "<td>";
+                echo "<a href=\"critique.php/?id=" . $row['idfilm'] . "\">Voir critiques</a>";
                 echo "</td></tr>";
             }
             ?>
