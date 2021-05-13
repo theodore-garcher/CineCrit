@@ -42,10 +42,10 @@ include("navbar.php");
                 }
                 echo "</td>";
                 echo "<td>";
-                echo "<a href=\"scriptsPHP/retirerFilmVu.php/?id=" . $row['idfilm'] . "\">Retirer</a>";
+                echo "<a href=\"scriptsPHP/retirerFilmVu.php?id=" . $row['idfilm'] . "\">Retirer</a>";
                 echo "</td>";
                 echo "<td>";
-                echo "<a href=\"critique.php/?id=" . $row['idfilm'] . "\">Écrire</a>";
+                echo "<a href=\"critique.php?id=" . $row['idfilm'] . "\">Écrire</a>";
                 echo "</td></tr>";
             }
             ?>
