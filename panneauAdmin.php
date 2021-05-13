@@ -104,7 +104,7 @@ include("navbar.php");
         <input type="reset" name="reset" value="Annuler" />
         <input type="submit" name="submit" value="Valider" />
     </form>
-    <h1>Ajout d'un film</h1>
+    <h1>Gérer des Administrateurs</h1>
     <form method="POST" action="panneauAdmin.php">
         <table>
             <tr>
@@ -112,6 +112,7 @@ include("navbar.php");
                 <td><input type="search" name="searchDemand"/></td>
                 <td><input type="submit" value="Rechercher"></td>
             </tr>
+            <!-- Optionnel, vérifie qu'il y a bien eu une recherche dans le champs de recherche-->
             <tr>
                 <td>Vous avez recherché :</td>
                 <td>
@@ -126,6 +127,35 @@ include("navbar.php");
             </tr>
         </table>
     </form>
+    <div class="catalog">
+        <table>
+            <tr>
+                <td>Pseudo</td>
+                <td>Action</td>
+            </tr>
+            <?php
+            if (isset($_POST['searchDemand']) == false){
+                $data = $cnx->query("SELECT iduser, pseudouser, isadmin  FROM cinecrit.utilisateur;")->fetchAll();
+            } else {
+                $searchString = $_POST['searchDemand'];
+                $prep = $cnx->prepare("SELECT iduser, pseudouser, isadmin FROM cinecrit.utilisateur WHERE UPPER(pseudouser) LIKE CONCAT('%',UPPER(?),'%');");
+                $prep->execute([$searchString]);
+                $data = $prep->fetchAll();
+            }
+            foreach ($data as $row){
+                echo "<tr class=\"catalogitem\"><td>". $row['pseudouser'] ."</td>";
+
+                if ($row['isadmin']) {
+                    $td = "<td><a href=\"scriptsPHP/gestionAdmin.php/?iduser=". $row['iduser'] ."&setadmin=false\">Retirer les droits</a></td>";
+                } else {
+                    $td = "<td><a href=\"scriptsPHP/gestionAdmin.php/?iduser=". $row['iduser'] ."&setadmin=true\">Ajouter les droits</a></td>";
+                }
+
+                echo $td;
+            }
+            ?>
+        </table>
+    </div>
 
 </body>
 
