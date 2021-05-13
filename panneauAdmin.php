@@ -104,12 +104,12 @@ include("navbar.php");
         <input type="reset" name="reset" value="Annuler" />
         <input type="submit" name="submit" value="Valider" />
     </form>
-    <h1>Gérer des Administrateurs</h1>
+    <h1>Gérer les Administrateurs</h1>
     <form method="POST" action="panneauAdmin.php">
         <table>
             <tr>
                 <td>Rechercher un utilisateur</td>
-                <td><input type="search" name="searchDemand"/></td>
+                <td><input type="search" name="searchDemandUser"/></td>
                 <td><input type="submit" value="Rechercher"></td>
             </tr>
             <!-- Optionnel, vérifie qu'il y a bien eu une recherche dans le champs de recherche-->
@@ -117,10 +117,10 @@ include("navbar.php");
                 <td>Vous avez recherché :</td>
                 <td>
                 <?php
-                if (isset($_POST['searchDemand']) == false){
+                if (isset($_POST['searchDemandUser']) == false){
                     echo "Rien";
                 } else {
-                    echo $_POST['searchDemand'];
+                    echo $_POST['searchDemandUser'];
                 }
                 ?>
                 </td>
@@ -134,10 +134,10 @@ include("navbar.php");
                 <td>Action</td>
             </tr>
             <?php
-            if (isset($_POST['searchDemand']) == false){
+            if (isset($_POST['searchDemandUser']) == false){
                 $data = $cnx->query("SELECT iduser, pseudouser, isadmin  FROM cinecrit.utilisateur;")->fetchAll();
             } else {
-                $searchString = $_POST['searchDemand'];
+                $searchString = $_POST['searchDemandUser'];
                 // système de protection contre l'injection SQL
                 $prep = $cnx->prepare("SELECT iduser, pseudouser, isadmin FROM cinecrit.utilisateur WHERE UPPER(pseudouser) LIKE CONCAT('%',UPPER(?),'%');");
                 $prep->execute([$searchString]);
@@ -161,7 +161,7 @@ include("navbar.php");
             ?>
         </table>
     </div>
-
+    </table>
 </body>
 
 </html>
