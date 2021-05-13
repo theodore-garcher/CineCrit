@@ -43,9 +43,7 @@ include("navbar.php");
                 echo "<td>";
                 $dataCheck = $cnx->query("SELECT * FROM cinecrit.filmvisionne WHERE cinecrit.filmvisionne.idfilm = " . $row['idfilm'] . " AND cinecrit.filmvisionne.iduser = " . $_SESSION['iduser'] . ";")->fetchAll();
                 if (empty($dataCheck)) {
-                    echo "<form method=\"POST\" action=\"scriptsPHP/ajoutFilmVu.php\">";
-                    echo "<input type=\"radio\" name=\"film\" value=\"" . $row['idfilm'] . "\" checked hidden/>";
-                    echo "<input type=\"submit\" name=\"submit\" value=\"Ajouter\" /></form>";
+                    echo "<a href=\"scriptsPHP/ajoutFilmVu.php/?id=" . $row['idfilm'] . "\">J'ai vu ce film</a>";
                 }
                 echo "</td></tr>";
             }
