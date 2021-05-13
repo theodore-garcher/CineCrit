@@ -19,7 +19,7 @@ CREATE TABLE Personnalite(
    idPersonalite SERIAL,
    nomPerso VARCHAR(100),
    prenomPerso VARCHAR(100),
-   dateNaissance VARCHAR(50),
+   dateNaissance DATE,
    nationalitePerso CHAR(2),
    PRIMARY KEY(idPersonalite)
 );
