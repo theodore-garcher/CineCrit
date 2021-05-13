@@ -138,6 +138,7 @@ include("navbar.php");
                 $data = $cnx->query("SELECT iduser, pseudouser, isadmin  FROM cinecrit.utilisateur;")->fetchAll();
             } else {
                 $searchString = $_POST['searchDemand'];
+                // système de protection contre l'injection SQL
                 $prep = $cnx->prepare("SELECT iduser, pseudouser, isadmin FROM cinecrit.utilisateur WHERE UPPER(pseudouser) LIKE CONCAT('%',UPPER(?),'%');");
                 $prep->execute([$searchString]);
                 $data = $prep->fetchAll();
@@ -145,10 +146,14 @@ include("navbar.php");
             foreach ($data as $row){
                 echo "<tr class=\"catalogitem\"><td>". $row['pseudouser'] ."</td>";
 
-                if ($row['isadmin']) {
-                    $td = "<td><a href=\"scriptsPHP/gestionAdmin.php/?iduser=". $row['iduser'] ."&setadmin=false\">Retirer les droits</a></td>";
+                if ($row['pseudouser'] != 'admin') {
+                    if ($row['isadmin']) {
+                        $td = "<td><a href=\"scriptsPHP/gestionAdmin.php/?iduser=". $row['iduser'] ."&setadmin=false\">Retirer les droits</a></td>";
+                    } else {
+                        $td = "<td><a href=\"scriptsPHP/gestionAdmin.php/?iduser=". $row['iduser'] ."&setadmin=true\">Ajouter les droits</a></td>";
+                    }
                 } else {
-                    $td = "<td><a href=\"scriptsPHP/gestionAdmin.php/?iduser=". $row['iduser'] ."&setadmin=true\">Ajouter les droits</a></td>";
+                    $td = "<td></td>";
                 }
 
                 echo $td;
