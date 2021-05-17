@@ -139,7 +139,7 @@ include("connexion.inc.php");
 
                         } else {
                             $searchString = $_POST['searchDemandPerso'];
-                            $prep = $cnx->prepare("SELECT * FROM cinecrit.personnalite WHERE cinecrit.personnalite.idpersonalite NOT IN (SELECT cinecrit.personnalite.idpersonalite FROM cinecrit.personnalite JOIN cinecrit.jouer ON (cinecrit.personnalite.idpersonalite = cinecrit.jouer.idpersonalite AND cinecrit.jouer.idfilm = ?)) AND CONCAT(UPPER(cinecrit.personnalite.prenomperso), UPPER(cinecrit.personnalite.nomperso)) LIKE CONCAT('%',UPPER(?),'%');");
+                            $prep = $cnx->prepare("SELECT * FROM cinecrit.personnalite WHERE cinecrit.personnalite.idpersonalite NOT IN (SELECT cinecrit.personnalite.idpersonalite FROM cinecrit.personnalite JOIN cinecrit.jouer ON (cinecrit.personnalite.idpersonalite = cinecrit.jouer.idpersonalite AND cinecrit.jouer.idfilm = ?)) AND CONCAT(UPPER(cinecrit.personnalite.prenomperso),' ', UPPER(cinecrit.personnalite.nomperso)) LIKE CONCAT('%',UPPER(?),'%');");
                             $prep->execute([$_GET["idfilm"], $searchString]);
 
                             $data = $prep->fetchAll();

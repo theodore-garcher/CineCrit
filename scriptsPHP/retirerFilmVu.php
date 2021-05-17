@@ -19,7 +19,7 @@
         $req2->execute();
         if ($req2->rowCount() > 0) {
             echo "Le film a bien été retiré de votre liste.";
-            header('Location: ../../panneauUser.php');
+            header('Location: ../panneauUser.php');
         } else {
             echo 'Erreur lors du retrait de votre film.';
         }
