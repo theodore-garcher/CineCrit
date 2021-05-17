@@ -11,7 +11,7 @@ include("scriptsPHP/connexion.inc.php");
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body>
+<body class="connect">
     <h1>Connectez-vous à votre compte Cinécrit</h1>
     <p>Accès administrateur : pseudo = admin, mdp = admin</p>
     <form action="scriptsPHP/authentification.php" method="post">
