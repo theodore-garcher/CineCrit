@@ -28,6 +28,10 @@ form input[type=reset], input[type=submit] {
     width: 100px;
 }
 
+.connect p {
+    text-align: center;
+}
+
 .catalog {
     border : 0px solid black;
 }
@@ -59,11 +63,11 @@ form input[type=reset], input[type=submit] {
     border: 1px solid #e7e7e7;
     background-color: #f3f3f3;
 }
-  
+
 .navbar li {
     float: left;
 }
-  
+
 .navbar li a {
     display: block;
     color: #666;
@@ -71,7 +75,7 @@ form input[type=reset], input[type=submit] {
     padding: 14px 16px;
     text-decoration: none;
 }
-  
+
 .navbar li a:hover {
     background-color: #ddd;
 }
