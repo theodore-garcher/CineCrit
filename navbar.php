@@ -14,7 +14,7 @@ $str = (strpos($url, $script) !== false) ? "../" : "";
     <ul>
         <?php
         echo "<li><a href=\"". $str ."catalogue.php\">Catalogue</a></li>";
-        echo "<li><a href=\"". $str ."panneauUser.php\">Panneau de <?php echo ". $_SESSION['pseudo'] ."; ?></a></li>";
+        echo "<li><a href=\"". $str ."panneauUser.php\">Panneau de ". $_SESSION['pseudo'] ."</a></li>";
 
         if ($_SESSION['isAdmin'] == 't') {
             echo "<li><a href=\"". $str ."panneauAdmin.php\">Panneau administrateur</a></li>";

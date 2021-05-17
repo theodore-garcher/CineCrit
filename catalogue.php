@@ -33,9 +33,11 @@ include("navbar.php");
                 <td>Genre(s)</td>
                 <td>Ajouter film</td>
                 <td>Voir les critiques</td>
+                <td>Acteurs</td>
+                <td>Réalisateurs</td>
                 <?php
                 if ($isadmin == 1) {
-                echo "<td colspan=3>Actions d'administrateur</td>";
+                echo "<td>Actions d'administrateur</td>";
             }
                 ?>
             </tr>
@@ -64,10 +66,10 @@ include("navbar.php");
                 echo "<td>";
                 echo "<a href=\"critique.php?id=" . $row['idfilm'] . "\">Voir critiques</a>";
                 echo "</td>";
+                echo "<td><a href=\"scriptsPHP/gestionActeur.php?idfilm=". $row['idfilm'] ."\">Gérer les acteurs</a></td>";
+                echo "<td><a href=\"scriptsPHP/gestionRealisateur.php?idfilm=". $row['idfilm'] ." \">Gérer les résalisateurs</a></td>";
 
                 if ($isadmin) {
-                    echo "<td><a href=\"scriptsPHP/gestionActeur.php?idfilm=". $row['idfilm'] ."\">Gérer les acteurs</a></td>";
-                    echo "<td><a href=\"scriptsPHP/gestionRealisateur.php?idfilm=". $row['idfilm'] ." \">Gérer les résalisateurs</a></td>";
                     echo "<td><a href=\"scriptsPHP/retirerFilmCatalogue.php?idfilm=". $row['idfilm'] ."\">Supprimer ce film</a></td>";
                 }
                 echo "</tr>";
