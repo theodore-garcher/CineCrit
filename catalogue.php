@@ -58,7 +58,7 @@ include("navbar.php");
                 echo "<td>";
                 $dataCheck = $cnx->query("SELECT * FROM cinecrit.filmvisionne WHERE cinecrit.filmvisionne.idfilm = " . $row['idfilm'] . " AND cinecrit.filmvisionne.iduser = " . $_SESSION['iduser'] . ";")->fetchAll();
                 if (empty($dataCheck)) {
-                    echo "<a href=\"scriptsPHP/ajoutFilmVu.php/?id=" . $row['idfilm'] . "\">J'ai vu ce film</a>";
+                    echo "<a href=\"scriptsPHP/ajoutFilmVu.php?id=" . $row['idfilm'] . "\">J'ai vu ce film</a>";
                 }
                 echo "</td>";
                 echo "<td>";
@@ -67,8 +67,8 @@ include("navbar.php");
 
                 if ($isadmin) {
                     echo "<td><a href=\"scriptsPHP/gestionActeur.php?idfilm=". $row['idfilm'] ."\">Gérer les acteurs</a></td>";
-                    echo "<td><a href=\"scriptsPHP/gestionRealisateur.php/?idfilm=". $row['idfilm'] ." \">Gérer les résalisateurs</a></td>";
-                    echo "<td><a href=\"scriptsPHP/retirerFilmCatalogue.php/?idfilm=". $row['idfilm'] ."\">Supprimer ce film</a></td>";
+                    echo "<td><a href=\"scriptsPHP/gestionRealisateur.php?idfilm=". $row['idfilm'] ." \">Gérer les résalisateurs</a></td>";
+                    echo "<td><a href=\"scriptsPHP/retirerFilmCatalogue.php?idfilm=". $row['idfilm'] ."\">Supprimer ce film</a></td>";
                 }
                 echo "</tr>";
             }

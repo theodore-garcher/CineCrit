@@ -19,7 +19,7 @@
         $req2->execute([$film, $_SESSION['iduser']]);
         if ($req2->rowCount() > 0) {
             echo "Le film a bien été ajouté à votre liste.";
-            header('Location: ../../panneauUser.php');
+            header('Location: ../panneauUser.php');
         } else {
             echo 'Erreur lors de l’ajout de votre film.';
         }

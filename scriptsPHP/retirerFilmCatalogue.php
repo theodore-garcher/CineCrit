@@ -25,7 +25,17 @@ include("connexion.inc.php");
             $titrefilm = $data[0]['titre'];
 
             // Insérer ici le code pour l'utilisation normale
-            echo "<h1>". $titrefilm ."</h1>";
+            echo "<h1> Suppression du film : ". $titrefilm ."</h1>";
+
+            $prep = $cnx->prepare("DELETE FROM cinecrit.film WHERE idfilm = ?");
+            $prep->execute([$_GET['idfilm']]);
+            $count = $prep->rowCount();
+            if ($count > 0) {
+                echo "Le film a bien été supprimé.";
+            } else {
+                echo "Le film n'a pas pu être supprimé.";
+
+            }
         }
         }
         if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 't') {
