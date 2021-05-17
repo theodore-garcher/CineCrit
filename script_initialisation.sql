@@ -50,9 +50,9 @@ CREATE TABLE Critique(
    idFilm INTEGER NOT NULL,
    idUser INTEGER NOT NULL,
    PRIMARY KEY(idCrit),
-   UNIQUE(idFilm),
-   FOREIGN KEY(idFilm) REFERENCES Film(idFilm),
-   FOREIGN KEY(idUser) REFERENCES Utilisateur(idUser)
+   UNIQUE(idFilm),s
+   FOREIGN KEY(idFilm) REFERENCES Film(idFilm) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY(idUser) REFERENCES Utilisateur(idUser) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE Commentaire(
@@ -62,48 +62,48 @@ CREATE TABLE Commentaire(
    idUser INTEGER NOT NULL,
    idCrit INTEGER NOT NULL,
    PRIMARY KEY(idCom),
-   FOREIGN KEY(idUser) REFERENCES Utilisateur(idUser),
-   FOREIGN KEY(idCrit) REFERENCES Critique(idCrit)
+   FOREIGN KEY(idUser) REFERENCES Utilisateur(idUser) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY(idCrit) REFERENCES Critique(idCrit) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE Qualifier(
    idFilm INTEGER,
    codeGenre INTEGER,
    PRIMARY KEY(idFilm, codeGenre),
-   FOREIGN KEY(idFilm) REFERENCES Film(idFilm),
-   FOREIGN KEY(codeGenre) REFERENCES Genre(codeGenre)
+   FOREIGN KEY(idFilm) REFERENCES Film(idFilm) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY(codeGenre) REFERENCES Genre(codeGenre) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE Produire(
    idFilm INTEGER,
    codeProd INTEGER,
    PRIMARY KEY(idFilm, codeProd),
-   FOREIGN KEY(idFilm) REFERENCES Film(idFilm),
-   FOREIGN KEY(codeProd) REFERENCES Production(codeProd)
+   FOREIGN KEY(idFilm) REFERENCES Film(idFilm) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY(codeProd) REFERENCES Production(codeProd) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE Jouer(
    idFilm INTEGER,
    idPersonalite INTEGER,
    PRIMARY KEY(idFilm, idPersonalite),
-   FOREIGN KEY(idFilm) REFERENCES Film(idFilm),
-   FOREIGN KEY(idPersonalite) REFERENCES Personnalite(idPersonalite)
+   FOREIGN KEY(idFilm) REFERENCES Film(idFilm) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY(idPersonalite) REFERENCES Personnalite(idPersonalite) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE Realise(
    idFilm INTEGER,
    idPersonalite INTEGER,
    PRIMARY KEY(idFilm, idPersonalite),
-   FOREIGN KEY(idFilm) REFERENCES Film(idFilm),
-   FOREIGN KEY(idPersonalite) REFERENCES Personnalite(idPersonalite)
+   FOREIGN KEY(idFilm) REFERENCES Film(idFilm) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY(idPersonalite) REFERENCES Personnalite(idPersonalite) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE FilmVisionne(
    idFilm INTEGER,
    idUser INTEGER,
    PRIMARY KEY(idFilm, idUser),
-   FOREIGN KEY(idFilm) REFERENCES Film(idFilm),
-   FOREIGN KEY(idUser) REFERENCES Utilisateur(idUser)
+   FOREIGN KEY(idFilm) REFERENCES Film(idFilm) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY(idUser) REFERENCES Utilisateur(idUser) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE critiqueUtile(
@@ -111,6 +111,6 @@ CREATE TABLE critiqueUtile(
    idCrit INTEGER,
    boolCrit BOOLEAN,
    PRIMARY KEY(idUser, idCrit),
-   FOREIGN KEY(idUser) REFERENCES Utilisateur(idUser),
-   FOREIGN KEY(idCrit) REFERENCES Critique(idCrit)
+   FOREIGN KEY(idUser) REFERENCES Utilisateur(idUser) ON DELETE RESTRICT ON UPDATE CASCADE,
+   FOREIGN KEY(idCrit) REFERENCES Critique(idCrit) ON DELETE RESTRICT ON UPDATE CASCADE
 );
