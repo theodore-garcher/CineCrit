@@ -83,17 +83,17 @@ include("navbar.php");
             </tr>
             <?php
             if (isset($_POST['searchMode']) && isset($_POST['sortMode'])) {
-                $sql = "SELECT DISTINCT titre, synopsis, datesortie, boxoffice, dureeminutesfilm, vofilm, CONCAT('%',UPPER(?),'%') as string FROM (SELECT titre, synopsis, datesortie, boxoffice, dureeminutesfilm, vofilm FROM cinecrit.film";
+                $sql = "SELECT titre, synopsis, datesortie, boxoffice, dureeminutesfilm, vofilm FROM cinecrit.film";
 
                 // gestion des trois cas de Rechercher
                 if ($_POST['searchMode'] == 'film') {
-                    $sql .= " WHERE UPPER(cinecrit.film.titre) LIKE string) AS sousrequete";
+                    $sql .= " WHERE UPPER(cinecrit.film.titre) LIKE CONCAT('%',UPPER(?),'%')";
 
                 } else if ($_POST['searchMode'] == 'acteur') {
-                    $sql .= " NATURAL JOIN cinecrit.jouer NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE string) AS sousrequete";
+                    $sql .= " NATURAL JOIN cinecrit.jouer NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE CONCAT('%',UPPER(?),'%')";
 
                 } else if ($_POST['searchMode'] == 'realisateur') {
-                    $sql .= " NATURAL JOIN cinecrit.realise NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE string) AS sousrequete";
+                    $sql .= " NATURAL JOIN cinecrit.realise NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE CONCAT('%',UPPER(?),'%')";
                 }
 
                 if ($_POST['sortMode'] == 'alpha') {
