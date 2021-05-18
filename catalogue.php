@@ -87,13 +87,13 @@ include("navbar.php");
 
                 // gestion des trois cas de Rechercher
                 if ($_POST['searchMode'] == 'film') {
-                    $sql .= " WHERE UPPER(cinecrit.film.titre) LIKE string AS sousrequete";
+                    $sql .= " WHERE UPPER(cinecrit.film.titre) LIKE string) AS sousrequete";
 
                 } else if ($_POST['searchMode'] == 'acteur') {
                     $sql .= " NATURAL JOIN cinecrit.jouer NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE string) AS sousrequete";
 
                 } else if ($_POST['searchMode'] == 'realisateur') {
-                    $sql .= " NATURAL JOIN cinecrit.realise NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE string AS sousrequete";
+                    $sql .= " NATURAL JOIN cinecrit.realise NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE string) AS sousrequete";
                 }
 
                 if ($_POST['sortMode'] == 'alpha') {
