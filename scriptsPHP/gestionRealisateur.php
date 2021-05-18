@@ -59,7 +59,7 @@ include("connexion.inc.php");
                     $prep = $cnx->prepare("SELECT * FROM cinecrit.personnalite NATURAL JOIN cinecrit.realise NATURAL JOIN cinecrit.film WHERE cinecrit.film.idfilm = ?");
                     $prep->execute(array($_GET['idfilm']));
                     $data = $prep->fetchAll();
-                    $count = $data->rowCount();
+                    $count = $prep->rowCount();
 
                     if ($count > 0) {
                         foreach ($data as $row) {
