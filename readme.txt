@@ -1,1 +1,2 @@
-coucou toi
+compte administrateur = admin
+mdp administrateur = admin
