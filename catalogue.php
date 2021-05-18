@@ -93,7 +93,7 @@ include("navbar.php");
                     $sql .= " NATURAL JOIN cinecrit.jouer NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE CONCAT('%',UPPER(?),'%'))";
 
                 } else if ($_POST['searchMode'] == 'realisateur') {
-                    $sql .= " NATURAL JOIN cinecrit.realise NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE CONCAT('%',UPPER(?),'%'))";
+                    $sql .= " NATURAL JOIN cinecrit.realise NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE CONCAT('%',UPPER(?),'%')) AS sousrequete";
                 }
 
                 if ($_POST['sortMode'] == 'alpha') {
