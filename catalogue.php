@@ -83,7 +83,7 @@ include("navbar.php");
             </tr>
             <?php
             if (isset($_POST['searchMode']) && isset($_POST['sortMode'])) {
-                $sql = "SELECT titre, synopsis, datesortie, boxoffice, dureeminutesfilm, vofilm FROM cinecrit.film";
+                $sql = "SELECT * FROM cinecrit.film";
 
                 // gestion des trois cas de Rechercher
                 if ($_POST['searchMode'] == 'film') {
