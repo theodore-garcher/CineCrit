@@ -70,7 +70,7 @@ include("connexion.inc.php");
                                 ?>
                                 <td>
                                     <?php
-                                     echo "<form method=\"POST\" action=\"gestionActeur.php?idfilm=". $_GET['idfilm'] ."\">";
+                                     echo "<form method=\"POST\" action=\"gestionActeur.php?idfilm=". $row['idfilm'] ."\">";
                                      echo "<input type=\"hidden\" name=\"idperso\" value=\"". $row["idpersonalite"] ."\"/>";
                                     ?>
 
