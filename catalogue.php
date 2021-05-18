@@ -83,17 +83,17 @@ include("navbar.php");
             </tr>
             <?php
             if (isset($_POST['searchMode']) && isset($_POST['sortMode'])) {
-                $sql = "SELECT DISTINCT titre, synopsis, datesortie, boxoffice, dureeminutesfilm, vofilm  FROM (SELECT titre, synopsis, datesortie, boxoffice, dureeminutesfilm, vofilm FROM cinecrit.film";
+                $sql = "SELECT DISTINCT titre, synopsis, datesortie, boxoffice, dureeminutesfilm, vofilm, CONCAT('%',UPPER(?),'%') as string FROM (SELECT titre, synopsis, datesortie, boxoffice, dureeminutesfilm, vofilm FROM cinecrit.film";
 
                 // gestion des trois cas de Rechercher
                 if ($_POST['searchMode'] == 'film') {
-                    $sql .= " WHERE UPPER(cinecrit.film.titre) LIKE CONCAT('%',UPPER(?),'%')) AS sousrequete";
+                    $sql .= " WHERE UPPER(cinecrit.film.titre) LIKE string AS sousrequete";
 
                 } else if ($_POST['searchMode'] == 'acteur') {
-                    $sql .= " NATURAL JOIN cinecrit.jouer NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE CONCAT('%',UPPER(?),'%')) AS sousrequete";
+                    $sql .= " NATURAL JOIN cinecrit.jouer NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE string) AS sousrequete";
 
                 } else if ($_POST['searchMode'] == 'realisateur') {
-                    $sql .= " NATURAL JOIN cinecrit.realise NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE CONCAT('%',UPPER(?),'%')) AS sousrequete";
+                    $sql .= " NATURAL JOIN cinecrit.realise NATURAL JOIN cinecrit.personnalite WHERE UPPER(CONCAT(cinecrit.personnalite.prenomperso, ' ', cinecrit.personnalite.nomperso)) LIKE string AS sousrequete";
                 }
 
                 if ($_POST['sortMode'] == 'alpha') {
@@ -141,7 +141,7 @@ include("navbar.php");
                 echo "<a href=\"critique.php?id=" . $row['idfilm'] . "\">Critiques</a>";
                 echo "</td>";
                 echo "<td><a href=\"scriptsPHP/gestionActeur.php?idfilm=". $row['idfilm'] ."\">Gérer les acteurs</a></td>";
-                echo "<td><a href=\"scriptsPHP/gestionRealisateur.php?idfilm=". $row['idfilm'] ." \">Gérer les résalisateurs</a></td>";
+                echo "<td><a href=\"scriptsPHP/gestionRealisateur.php?idfilm=". $row['idfilm'] ." \">Gérer les réalisateurs</a></td>";
 
                 if ($isadmin) {
                     echo "<td><a href=\"scriptsPHP/retirerFilmCatalogue.php?idfilm=". $row['idfilm'] ."\">Supprimer ce film</a></td>";
